@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, Button } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import { TimePicker } from "react-native-simple-time-picker";
 
-const EditClassModal = () => {
+const EditClassModal = ({route,navigation}) => {
   const id = "1";
   const data = require("../testData/test.json");
   const day = "monday";
@@ -16,7 +17,16 @@ const EditClassModal = () => {
   const ff = { hours: fromHour, minutes: fromMinute };
   const tt = { hours: toHour, minutes: toMinute };
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
+      <Text></Text>
+      <View style = {styles.addpageheader}>
+        <Button title = "<Back" onPress = {()=>navigation.goBack()} />
+        <View style = {styles.titletextbox}>
+          
+          <Text style = {styles.titletext}>  EDIT YOUR CLASS</Text>
+          
+      </View>
+      </View>
       <View>
         <Text style={styles.text}>CLASS NAME </Text>
         <TextInput
@@ -67,7 +77,7 @@ const EditClassModal = () => {
             <Button
               style={styles.button}
               title="GO BACK !! DON'T CHANGE IT"
-              onPress={() => {}}
+              onPress={() => navigation.goBack()}
               color="grey"
             />
           </View>
@@ -89,17 +99,18 @@ const EditClassModal = () => {
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+   
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-around",
-    margin: "5%",
+   padding:10,
+  
+    backgroundColor: '#290001',
   },
   text: {
     color: "white",
@@ -121,6 +132,28 @@ const styles = StyleSheet.create({
   },
   timepicker: {
     backgroundColor: "#DBCBBD",
+  },
+  titletextbox:{
+    display:'flex',
+    justifyContent:'center',
+    alignContent:'center',
+  
+  },
+  titletext:{
+    color:'white',
+ 
+    
+  },
+  addpageheader:{
+ 
+    display:'flex',
+    flexDirection:'row',
+    justifyContent:'center',
+    alignContent:'center',
+    padding:6,
+    margin:'5%',
+    borderRadius:10,
+    justifyContent: "flex-start",
   },
 });
 export default EditClassModal;

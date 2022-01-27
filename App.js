@@ -30,11 +30,13 @@ import { NavigationContainer } from "@react-navigation/native";
           <RootStack.Screen
             name="EditClass"
             component={EditClassModal}
+            options={{ headerShown: false }}
           />
   
            <RootStack.Screen
-            name="Add Class"
+            name="AddClass"
             component={AddClassModal}
+            options={{ headerShown: false }}
           />
         </RootStack.Navigator>
       </NavigationContainer>

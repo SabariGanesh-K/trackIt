@@ -1,22 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TextInput, StyleSheet, Button } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import { TimePicker } from "react-native-simple-time-picker";
 
-const AddClassModal = () => {
-  const [day, changeDay] = useState("Monday");
+const AddClassModal = ({navigation,route}) => {
+  const [day, changeDay] = useState(route.params.currentday);
   const [className, changeClassname] = useState("");
   const [classCode, changeClassCode] = useState("");
   const [fromHour, changeFromHour] = useState(0);
   const t = "rgba(0,0,0,0)"
 
   const [dayList,changeDayList] = useState([t,t,t,t,t,t])
-  const [daySelected, changeDaySelected] = useState("");
+  
   const [toHour, changeToHour] = useState(0);
   const [fromMinute, changeFromMinute] = useState(0);
   const [toMinute, changeToMinute] = useState(0);
   const ff = { hours: fromHour, minutes: fromMinute };
   const tt = { hours: toHour, minutes: toMinute };
     const dayId = [{"Monday":0,"Tuesday":1,"Wednesday":2,"Thursday":3,"Friday":4,"Saturday":5}]
+  
+    const reset = () =>{
+      changeDay(route.params.currentday)
+      changeClassname("")
+      changeClassCode("")
+      changeFromHour(0)
+      changeToHour(0)
+      changeFromMinute(0)
+      changeToMinute(0)
+    }
 useEffect(()=>{
     const temp = [t,t,t,t,t,t]
     temp[dayId[0][day]] = "purple"
@@ -24,7 +35,16 @@ useEffect(()=>{
     changeDayList(temp)
 },[day,changeDay])
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
+      <Text></Text>
+      <View style = {styles.addpageheader}>
+        <Button title = "<Back" onPress = {()=>navigation.goBack()} />
+        <View style = {styles.titletextbox}>
+          
+          <Text style = {styles.titletext}>ADD YOUR CLASS</Text>
+          
+      </View>
+      </View>
       <View style={styles.days}>
         <Button title="M" onPress = {()=>changeDay("Monday")} color = {dayList[0]} />
         <Button title="T" onPress = {()=>changeDay("Tuesday")} color = {dayList[1]} />
@@ -82,13 +102,13 @@ useEffect(()=>{
         </View>
       </View>
 
-      <View style={{ justifyContent: "space-between", margin: "10%" }}>
+      <View style={{ justifyContent: "space-around", margin: "10%" }}>
         <View>
           <View style={styles.buttonContainer}>
             <Button
               style={styles.button}
               title="RESET"
-              onPress={() => {}}
+              onPress={reset}
               color="grey"
             />
           </View>
@@ -104,13 +124,13 @@ useEffect(()=>{
             <Button
               style={styles.button}
               title="DELETE AND GO BACKKKK"
-              onPress={() => {}}
+              onPress={()=>navigation.goBack()}
               color="red"
             />
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -118,8 +138,9 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-around",
-    margin: "5%",
+
+  
+    backgroundColor: '#290001',
   },
   days: {
     display: "flex",
@@ -137,6 +158,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     margin: "5%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
   },
   input: {
     height: 40,
@@ -163,6 +187,28 @@ const styles = StyleSheet.create({
       color:'white',
       justifyContent:'center',
       alignContent:'center'
+  },
+  addpageheader:{
+ 
+    display:'flex',
+    flexDirection:'row',
+    justifyContent:'center',
+    alignContent:'center',
+    padding:6,
+    margin:'5%',
+    borderRadius:10,
+    justifyContent: "flex-start",
+  },
+  titletextbox:{
+    display:'flex',
+    justifyContent:'center',
+    alignContent:'center',
+  
+  },
+  titletext:{
+    color:'white',
+ 
+    
   }
 });
 

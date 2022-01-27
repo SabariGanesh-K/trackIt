@@ -1,43 +1,63 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView,Pressable } from "react-native";
 
-const data = require("../testData/test.json");
+// const data = require("../testData/test.json");
 const id = 1;
 
 
-const DisplayClass = () => {
-  const [time, setTime] = useState("");
+const DisplayClass = (props) => {
+  const data = props.data.item
+  console.warn(data)
+  // const [time, setTime] = useState("");
   const [type, setType] = useState("");
   const [subject, setSubject] = useState("HOUR");
   const [subjectCode, setSubjectCode] = useState("FREE");
   const [status, setStatus] = useState("free");
-  useEffect(() => {
-    if (id == 1) {
-      setTime("8:00-8:50");
-    }
-    setSubject(data.monday[id].name)
-    setSubjectCode(data.monday[id].code)
-    if (data.monday[id].type == "theory") {
-      setType("LAB");
-    } else {
-      setType("THEORY");
-    }
-  });
+//   useEffect(() => {
+// 
+//     setSubject(data.name)
+//     setSubjectCode(data.code)
+//     if (data.monday[id].type == "theory") {
+//       setType("LAB");
+//     } else {
+//       setType("THEORY");
+//     }
+//   });
+ 
+const fromTime = (data.fromHour.toString() +" : "+ data.fromMinute.toString())
+const toTime = (data.toHour.toString() +" : "+ data.toMinute.toString())
 
   return (
-    <SafeAreaView style={styles.box}>
+    <Pressable
+    onPress={() => {}}
+    onLongPress = {()=>{
+      props.nav.push("EditClass")
+    }}
+    style={({ pressed }) => [
+      {
+        backgroundColor: pressed
+          ? 'black'
+          :' rgba(0,0,0,0)'
+      },
+      styles.wrapperCustom
+    ]}>
+  <SafeAreaView style={styles.box}>
       <View style={{ backgroundColor: "#87431D" }}>
-        <Text style={styles.text}>{time}</Text>
-        <Text style={styles.text}>{type}</Text>
+        <Text style={styles.text}>{fromTime} - </Text>
+        
+        <Text style={styles.text}>{toTime}</Text>
+      
       </View>
       <View>
-      <Text style={styles.text}>{subjectCode}</Text>
-        <Text style={styles.text}>{subject}</Text>
+      <Text style={styles.text}>{data.code}</Text>
+        <Text style={styles.text}>{data.name}</Text>
       </View>
       <View>
      
       </View>
     </SafeAreaView>
+  </Pressable>
+  //  'rgba(210, 230, 255,0.5)'
   );
 };
 

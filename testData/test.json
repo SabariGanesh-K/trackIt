@@ -1,85 +1,21 @@
-{"monday":{
-    "1":{"type":"theory","name":"Calculus","code":"BMAT101L","credits":3,"fromHour":8,"fromMinute":0,"toHour":8,"toMinute":50},
-    "2":{"type":"lab","name":"Calculus Lab","code":"BMAT101P","credits":1,"fromHour":8,"fromMinute":50,"toHour":9,"toMinute":30},
-    "3":{"type":"theory","name":"Electronic","code":"BECE101L","credits":3,"fromHour":9,"fromMinute":30,"toHour":10,"toMinute":15},
-    "4":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "5":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "6":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "7":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "8":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "9":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "10":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "11":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "12":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null}
-},
-"tuesday":{
-    "1":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "2":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "3":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "4":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "5":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "6":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "7":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "8":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "9":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "10":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "11":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "12":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null}
-},
-"wednesday":{
-    "1":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "2":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "3":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "4":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "5":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "6":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "7":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "8":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "9":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "10":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "11":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "12":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null}
-},
-"thursday":{
-    "1":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "2":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "3":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "4":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "5":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "6":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "7":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "8":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "9":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "10":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "11":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "12":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null}
-},
-"friday":{
-    "1":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "2":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "3":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "4":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "5":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "6":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "7":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "8":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "9":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "10":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "11":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "12":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null}
-},
-"saturday":{
-    "1":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "2":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "3":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "4":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "5":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "6":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "7":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "8":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "9":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "10":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "11":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null},
-    "12":{"type":null,"name":null,"code":null,"credits":null,"fromHour":null,"fromMinute":null,"toHour":null,"toMinute":null}
-}
+{"monday":[
+    {"type":"theory","name":"Calculus","code":"BMAT101L","credits":3,"fromHour":8,"fromMinute":0,"toHour":8,"toMinute":50,"key":"80850CALCULUS"},
+    {"type":"lab","name":"Calculus Lab","code":"BMAT101P","credits":1,"fromHour":8,"fromMinute":50,"toHour":9,"toMinute":30,"key":"850930CALCULUSLAB"},
+    {"type":"theory","name":"Electronic","code":"BECE101L","credits":3,"fromHour":9,"fromMinute":30,"toHour":10,"toMinute":15,"key":"9301015ELECTRONIC"}
+],
+"tuesday":[
+   
+],
+"wednesday":[
+
+],
+"thursday":[
+ 
+],
+"friday":[
+   
+],
+"saturday":[
+   
+]
 }
