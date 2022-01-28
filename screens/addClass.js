@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TextInput, StyleSheet, Button } from "react-native";
+import { View, Text, TextInput, StyleSheet, Button, Alert } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { TimePicker } from "react-native-simple-time-picker";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const AddClassModal = ({navigation,route}) => {
   const [day, changeDay] = useState(route.params.currentday);
   const [className, changeClassname] = useState("");
@@ -18,7 +18,46 @@ const AddClassModal = ({navigation,route}) => {
   const ff = { hours: fromHour, minutes: fromMinute };
   const tt = { hours: toHour, minutes: toMinute };
     const dayId = [{"Monday":0,"Tuesday":1,"Wednesday":2,"Thursday":3,"Friday":4,"Saturday":5}]
-  
+      const [info,updateinfo] = useState([])
+    const addClassToStorage = () =>{
+
+
+     
+      const dat = {
+        Monday: info.monday,
+        Tuesday: info.tuesday,
+        Wednesday: info.wednesday,
+        Thursday: info.thursday,
+        Friday: info.friday,
+        Saturday: info.saturday,
+      };
+     
+      const valid=() =>{
+        console.warn(dat[day])
+         const [done,changeDone] = useState(true)
+         dat[day].map((item)=>{
+          if( item.key === key) changeDone(false)
+        })
+        return(
+            done
+        )
+      }
+      const key = (fromHour.toString()+ fromMinute.toString()+toHour.toString()+toMinute.toString()+className )
+      if (valid) {
+        console.warn("info is",info)
+        console.warn(dat[day])
+        dat[day].push({type:"theory",name:className,code:classCode,credits:1,fromHour: fromHour ,fromMinute: fromMinute ,toHour: toHour ,toMinute: toMinute ,key: key})
+        console.warn("Adding",info)
+         AsyncStorage.mergeItem('@storage_Key', JSON.stringify(info))
+        Alert.alert("Class addeddd. :)")
+        navigation.push("Main")
+      }
+      else{
+        Alert.alert("Dear idiot , Data already exist !!" )
+      }
+
+
+    }
     const reset = () =>{
       changeDay(route.params.currentday)
       changeClassname("")
@@ -33,6 +72,16 @@ useEffect(()=>{
     temp[dayId[0][day]] = "purple"
    
     changeDayList(temp)
+    const fetchdata = async () => {
+      try {
+        const jsonValue = await AsyncStorage.getItem('@storage_Key')
+        console.warn("given is",JSON.parse(jsonValue),"day",day,"dat[day]")
+        updateinfo(JSON.parse(jsonValue))
+      } catch(e) {
+        console.warn("error:",e)
+      }
+    }
+    fetchdata()
 },[day,changeDay])
   return (
     <ScrollView style={styles.container}>
@@ -116,7 +165,7 @@ useEffect(()=>{
             <Button
               style={styles.button}
               title="ADD THE CLASSS"
-              onPress={() => {}}
+              onPress={addClassToStorage}
               color="green"
             />
           </View>

@@ -5,7 +5,7 @@ import { TimePicker } from "react-native-simple-time-picker";
 
 const EditClassModal = ({route,navigation}) => {
   const id = "1";
-  const data = require("../testData/test.json");
+
   const day = "monday";
   const hourData = data[day][id];
   const [className, changeClassname] = useState(hourData.name);
@@ -16,6 +16,7 @@ const EditClassModal = ({route,navigation}) => {
   const [toMinute, changeToMinute] = useState(hourData.toMinute);
   const ff = { hours: fromHour, minutes: fromMinute };
   const tt = { hours: toHour, minutes: toMinute };
+
   return (
     <ScrollView style={styles.container}>
       <Text></Text>
