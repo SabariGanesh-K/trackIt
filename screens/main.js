@@ -44,19 +44,20 @@ console.warn(dayNames)
       l[dayIdInv[0][day]] = day
       changeDayList(temp)
       changeDayNames(l)
-  })
+      const curr = day
+      changeclasses( <DisplayClasses currentday = {curr} nav = {navigation} />)
+  },[day,changeDay])
 
-  useEffect(()=>{
-    const curr = day
-    changeclasses( <DisplayClasses currentday = {curr} nav = {navigation} />)
-  },[day])
+//   useEffect(()=>{  
+// 
+//   },[])
     return (
        <View style = {styles.mastercontainer}>
     
           <Greeting/>
           <View style={styles.days}>
             <Button title = "Go To Class" />
-            <Button title = "+ ADD CLASS" color="orange" onPress = {()=>navigation.push("AddClass",{currentday:day})}/>
+            <Button title = "+ ADD CLASS" color="orange" onPress = {()=>navigation.push("AddClass",{currentday:"Saturday"})}/>
           </View>
           <View>
             {/* <LiveClass currentday = {day}  /> */}

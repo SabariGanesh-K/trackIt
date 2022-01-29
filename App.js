@@ -19,7 +19,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
     console.log('default values set')  
   }
   const MainStackScreen = () => {
+    console.log("App opened")
     return (
+     
       <MainStack.Navigator>
         <MainStack.Screen name="Home" component={Main}   options={{ headerShown: false }}/>
 

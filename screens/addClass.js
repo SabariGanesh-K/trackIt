@@ -36,7 +36,7 @@ const AddClassModal = ({navigation,route}) => {
         console.warn(dat[day])
          const [done,changeDone] = useState(true)
          dat[day].map((item)=>{
-          if( item.key === key) changeDone(false)
+          if(( item.fromHour >= fromHour && item.toHour <= toHour && item.fromMinute >= fromMinute && item.toMinute <= toHour)||(item.fromHour<=toHour && item.fromMinute <= toMinute && item.toHour >= fromHour && item.toMinute >= fromMinute)) changeDone(false)
         })
         return(
             done

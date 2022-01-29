@@ -5,80 +5,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import DisplayClass from "./displayClass";
 import NoClasss from "./noClass";
 const DisplayClasses = (props) => {
-  
+  console.warn("program started")
   const [day,changeDay] = useState(props.currentday)
-  // const data = require("../testData/test.json");
   const [info,updateinfo] = useState([])
 
-  
-  const [status,changeStatus] = useState(false)
-  const dat = {
-    "Monday": info.monday,
-    "Tuesday": info.tuesday,
-    "Wednesday": info.wednesday,
-    "Thursday": info.thursday,
-    "Friday": info.friday,
-    "Saturday": info.saturday,
-  };
-function isEmpty(){
-//   const dat = {
-//     "Monday": info.monday,
-//     "Tuesday": info.tuesday,
-//     "Wednesday": info.wednesday,
-//     "Thursday": info.thursday,
-//     "Friday": info.friday,
-//     "Saturday": info.saturday,
-//   };
-//  console.warn(dat[props.currentday].length)
-  return(dat[props.currentday].length == 0)
-// return(dat[props.currentday].length)
-}
-  // useEffect(()=>{
-  //     // changeStatus(dat[day].length===0)
-  //     
-  // },[day])
-  var  display;
-  //   function display(){
-  //     if (dat[day] !== []) {
-  //         return(
-  //          <FlatList
-  //            data={dat[day]}
-  //            keyExtractor={(item) => item.key}
-  //            renderItem={(item) => <DisplayClass data={item} />}
-  //          />
-  //        )
-  //        }
-  //        else{
-  //            return(
-  // <View><NoClass currentday={day} /></View>
-  //            )
-  //        }
-  //   };
-
-  //       if (dat[day] !== []){
-  //
-  //           display = <NoClass currentday = {day} />
-  //       }
-  //       else{
-  //         display = (
-  //             <FlatList
-  //             data={dat[day]}
-  //             keyExtractor={(item) => item.key}
-  //             renderItem={(item) => <DisplayClass data={item} />}
-  //           />
-  //
-  //         )
-  //       }
-
-
-
-  console.log("Info is",info)
-
-
-useEffect(()=>{
-  
-  changeDay(props.currentday)
-  const fetchdata = async () => {
+  const fetchdata = async() =>{
     try {
       const jsonValue = await AsyncStorage.getItem('@storage_Key')
       console.warn("given is",JSON.parse(jsonValue),"day",day,"dat[day]")
@@ -87,34 +18,73 @@ useEffect(()=>{
       console.warn("error:",e)
     }
   }
-  fetchdata()
-},[])
 
-// useEffect(()=>{
-//   changeStatus(isEmpty())
-// },[day,changeDay])
+  if (info.length === 0){
+    fetchdata()
+  }
 
-
-console.warn("cdscdsc",props.currentday,isEmpty===true)
-if (status && 1) {
-  
-  display =  (
-    <View>
-    <NoClasss currentday = {day} />
-    </View>
-             
-)}
-else{ 
-  console.log("reacchheddddd")
-  display = (  <FlatList
-    data={dat[day]}
-     keyExtractor={(item) => item.key}
-     renderItem={(item) => <DisplayClass data={item} nav = {props.nav} />}
-   />)
-
-
+ function isEmpty(){
+  const dat = {
+    Monday: info.monday,
+    Tuesday: info.tuesday,
+    Wednesda: info.wednesday,
+    Thursday: info.thursday,
+    Friday: info.friday,
+    Saturday: info.saturday,
+  };
+let count = 0
+  for (var i in dat[props.currentday]){
+count+=1
+  }
+//  console.warn("len is ",Object.keys(info.saturday).length,info)
+ if (count === 0){
+   return(true)
+ }
+ else{
+  return(count === 0)
+ }
 }
-return(display)
+
+  let   display;
+  console.log("Info is",info)
+
+useEffect(()=>{
+  console.warn("useeffect reached")
+  changeDay(props.currentday)
+},[])
+console.warn("qwert",props.currentday)
+function displayit(){
+  const status = isEmpty()
+  if (status) {
+    console.warn("cdscdsc","isempty true",props.currentday,day)
+   return  (
+      <View>
+      <NoClasss currentday = {props.currentday} />
+      </View>
+               
+  )}
+  else{ 
+    // console.warn("cdscdsc",status,props.currentday,day)
+    const dat = {
+      "Monday": info.monday,
+      "Tuesday": info.tuesday,
+      "Wednesday": info.wednesday,
+      "Thursday": info.thursday,
+      "Friday": info.friday,
+      "Saturday": info.saturday,
+    };
+    console.warn("reacchheddddd")
+    return (  <FlatList
+      data={dat[props.currentday]}
+       keyExtractor={(item) => item.key}
+       renderItem={(item) => <DisplayClass data={item} nav = {props.nav} currentday = {props.currentday}/>}
+     />)
+  
+  
+  }
+}
+
+return(displayit())
 };
 
 export default DisplayClasses;

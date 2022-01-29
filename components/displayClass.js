@@ -6,6 +6,7 @@ const id = 1;
 
 
 const DisplayClass = (props) => {
+  const day = props.currentday
   const data = props.data.item
   console.warn(data)
   // const [time, setTime] = useState("");
@@ -19,19 +20,20 @@ const DisplayClass = (props) => {
 //     setSubjectCode(data.code)
 //     if (data.monday[id].type == "theory") {
 //       setType("LAB");
-//     } else {
+//     } else {r
 //       setType("THEORY");
 //     }
 //   });
  
 const fromTime = (data.fromHour.toString() +" : "+ data.fromMinute.toString())
 const toTime = (data.toHour.toString() +" : "+ data.toMinute.toString())
-
+console.warn("dqwdxwqdx",day)
+const key = (data.fromHour.toString()+ data.fromMinute.toString()+data.toHour.toString()+data.toMinute.toString()+data.name )
   return (
     <Pressable
     onPress={() => {}}
     onLongPress = {()=>{
-      props.nav.push("EditClass")
+      props.nav.push("EditClass",{currentday:props.currentday,name : data.name,code:data.code,fromHour:data.fromHour,toHour:data.toHour,fromMinute:data.fromMinute,toMinute:data.toMinute,key :key})
     }}
     style={({ pressed }) => [
       {

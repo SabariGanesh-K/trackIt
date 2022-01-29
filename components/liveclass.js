@@ -29,7 +29,7 @@ const LiveClass = (props) =>{
         <Pressable
         onPress={() => {}}
         onLongPress = {()=>{
-          props.nav.push("EditClass")
+          
         }}
         style={({ pressed }) => [
           {

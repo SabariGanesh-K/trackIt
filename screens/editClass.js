@@ -1,25 +1,106 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, Button } from "react-native";
+import React, { useState,useEffect } from "react";
+import { View, Text, TextInput, StyleSheet, Button, Alert } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { TimePicker } from "react-native-simple-time-picker";
-
+// import { useEffect } from "react/cjs/react.development";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const EditClassModal = ({route,navigation}) => {
   const id = "1";
 
-  const day = "monday";
-  const hourData = data[day][id];
-  const [className, changeClassname] = useState(hourData.name);
-  const [classCode, changeClassCode] = useState(hourData.code);
-  const [fromHour, changeFromHour] = useState(hourData.fromHour);
-  const [toHour, changeToHour] = useState(hourData.toHour);
-  const [fromMinute, changeFromMinute] = useState(hourData.fromMinute);
-  const [toMinute, changeToMinute] = useState(hourData.toMinute);
+
+  const [day,changeDay] = useState(route.params.currentday)
+  const [className, changeClassname] = useState(route.params.name);
+  const [classCode, changeClassCode] = useState(route.params.code);
+  const [fromHour, changeFromHour] = useState(route.params.fromHour);
+  const [toHour, changeToHour] = useState(route.params.toHour);
+  const [fromMinute, changeFromMinute] = useState(route.params.fromMinute);
+  const [toMinute, changeToMinute] = useState(route.params.toMinute);
+  const [info,changeinfo] = useState([])
   const ff = { hours: fromHour, minutes: fromMinute };
   const tt = { hours: toHour, minutes: toMinute };
+const oldkey = route.params.key
 
+
+  const editTheClass = () =>{
+    const dat = {
+      Monday: info.monday,
+      Tuesday: info.tuesday,
+      Wednesday: info.wednesday,
+      Thursday: info.thursday,
+      Friday: info.friday,
+      Saturday: info.saturday,
+    };
+
+
+
+    const valid=() =>{
+      console.warn(dat[day])
+       const [done,changeDone] = useState(true)
+       dat[day].map((item)=>{
+        if((( item.fromHour >= fromHour && item.toHour <= toHour && item.fromMinute >= fromMinute && item.toMinute <= toHour )||(item.fromHour<=toHour && item.fromMinute <= toMinute && item.toHour >= fromHour && item.toMinute >= fromMinute))&& item.name !== route.params.name && item.code !== route.params.code ) changeDone(false)
+      })
+      return(
+          done
+      )
+    }
+    const newkey = (fromHour.toString()+ fromMinute.toString()+toHour.toString()+toMinute.toString()+className )
+
+ 
+    function pushit(){
+      console.warn("info is now ",info,className)
+      dat[day].push({type:"theory",name:className,code:classCode,credits:1,fromHour: fromHour ,fromMinute: fromMinute ,toHour: toHour ,toMinute: toMinute ,key: newkey})
+      
+      console.warn("Edited as ",JSON.stringify(info))
+       AsyncStorage.setItem('@storage_Key', JSON.stringify(info))
+      Alert.alert("Class EDITED. :)")
+      navigation.push("Main")
+    }
+    if (valid){
+
+    // const temp = info
+      console.warn("info is",info,route.params.currentday,dat[day])
+      console.warn(oldkey)
+      const change = dat[day].filter((item)=>
+        item.key !== oldkey
+      )  
+      dat[day].length = 0
+      change.map((item)=> dat[day].push(item))
+      console.warn("after change",dat[day],"dxas",change)
+      pushit()
+   
+    }
+    else{
+      Alert.alert("Class already exist at that time ... Thinkkkk")
+    }
+
+
+  }
+
+
+  // const deleteClass = () =>{
+  //   const change = dat[day].filter((item)=>{
+  //       item.key === key
+  //   })
+  //   dat[day] = change
+  //   Alert.alert("CLASS DELETED :))")
+  //   navigation.push("Main")
+  // }
+  useEffect(()=>{
+    const fetchdata = async () => {
+      
+      try {
+        const jsonValue = await AsyncStorage.getItem('@storage_Key')
+        console.warn("given is",JSON.parse(jsonValue),"day",day,"dat[day]")
+        changeinfo(JSON.parse(jsonValue))
+      } catch(e) {
+        console.warn("error:",e)
+      }
+    }
+    fetchdata()
+  },[day,changeDay])
   return (
     <ScrollView style={styles.container}>
-      <Text></Text>
+      <Text>{day}</Text>
       <View style = {styles.addpageheader}>
         <Button title = "<Back" onPress = {()=>navigation.goBack()} />
         <View style = {styles.titletextbox}>
@@ -86,7 +167,7 @@ const EditClassModal = ({route,navigation}) => {
             <Button
               style={styles.button}
               title="SAVE CHANGES"
-              onPress={() => {}}
+              onPress={editTheClass}
               color="green"
             />
           </View>
@@ -94,7 +175,7 @@ const EditClassModal = ({route,navigation}) => {
             <Button
               style={styles.button}
               title="DELETE CLASS :)"
-              onPress={() => {}}
+              onPress={()=>{}}
               color="red"
             />
           </View>
