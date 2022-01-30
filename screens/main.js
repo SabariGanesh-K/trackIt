@@ -7,6 +7,7 @@ import DisplayClasses from '../components/displayClasses';
 import { ScrollView } from 'react-native-gesture-handler';
 import NoClass from '../components/noClass';
 import LiveClass from '../components/liveclass';
+import SundayMode from '../components/sundayMode';
 // const data = require("../testData/test.json");
 const Main = ({navigation}) =>{
   const data = async () => {
@@ -21,12 +22,12 @@ const Main = ({navigation}) =>{
   const d = new Date();
   let dayy = d.getDay()
  
-  const dayId = [{0:"Monday",1:"Tuesday",2:"Wednesday",3:"Thursday",4:"Friday",5:"Saturday"}]
-  const dayIdInv = [{"Monday":0,"Tuesday":1,"Wednesday":2,"Thursday":3,"Friday":4,"Saturday":5}]
+  const dayId = [{0:"Sunday",1:"Monday",2:"Tuesday",3:"Wednesday",4:"Thursday",5:"Friday",6:"Saturday"}]
+  const dayIdInv = [{"Sunday":0,"Monday":1,"Tuesday":2,"Wednesday":3,"Thursday":4,"Friday":5,"Saturday":6}]
   const [classes,changeclasses] = useState(<View></View>)
   const [day, changeDay] = useState(dayId[0][dayy]);
-  const temp = [t,t,t,t,t,t]
-  const l =["M","T","W","T","F","S","S"]
+  const temp = [t,t,t,t,t,t,t]
+  const l =["S","M","T","W","T","F","S"]
   l[dayy] = dayId[0][dayy]
  const [dayNames,changeDayNames] = useState(l)
 
@@ -38,14 +39,20 @@ console.warn(dayNames)
     console.log("Called for ",day)
 
 
-    const l =["M","T","W","T","F","S","S"]
-      const temp = [t,t,t,t,t,t]
-      temp[dayIdInv[0][day]] = ""
+    const l =["S","M","T","W","T","F","S"]
+    const temp = [t,t,t,t,t,t,t]
+      temp[dayIdInv[0][day]] = "purple"
       l[dayIdInv[0][day]] = day
       changeDayList(temp)
       changeDayNames(l)
       const curr = day
-      changeclasses( <DisplayClasses currentday = {curr} nav = {navigation} />)
+      if (day == "Sunday"){
+        changeclasses(<SundayMode/>)
+      }
+      else{
+        changeclasses( <DisplayClasses currentday = {curr} nav = {navigation} />)
+      }
+      
   },[day,changeDay])
 
 //   useEffect(()=>{  
@@ -56,19 +63,19 @@ console.warn(dayNames)
     
           <Greeting/>
           <View style={styles.days}>
-            <Button title = "Go To Class" />
-            <Button title = "+ ADD CLASS" color="orange" onPress = {()=>navigation.push("AddClass",{currentday:"Saturday"})}/>
+            <Button title = "Go To Class" onPress = {()=>navigation.push("Go to Class")} />
+            <Button title = "+ ADD CLASS" color="orange" onPress = {()=>navigation.push("AddClass",{currentday: day})}/>
           </View>
           <View>
-            {/* <LiveClass currentday = {day}  /> */}
+            {/* <LiveClass  /> */}
           </View>
           <View style={styles.days}>
-        <Button title={dayNames[0]} onPress = {()=>changeDay("Monday")} color = {dayList[0]}/>
-        <Button title={dayNames[1]} onPress = {()=>changeDay("Tuesday")} color = {dayList[1]}/>
-        <Button title={dayNames[2]} onPress = {()=>changeDay("Wednesday")} color = {dayList[2]}/>
-        <Button title={dayNames[3]} onPress = {()=>changeDay("Thursday")} color = {dayList[3]}/>
-        <Button title={dayNames[4]} onPress = {()=>changeDay("Friday")} color = {dayList[4]}/>
-        <Button title={dayNames[5]} onPress = {()=>changeDay("Saturday")} color = {dayList[5]}/>
+        <Button title={dayNames[1]} onPress = {()=>changeDay("Monday")} color = {dayList[1]}/>
+        <Button title={dayNames[2]} onPress = {()=>changeDay("Tuesday")} color = {dayList[2]}/>
+        <Button title={dayNames[3]} onPress = {()=>changeDay("Wednesday")} color = {dayList[3]}/>
+        <Button title={dayNames[4]} onPress = {()=>changeDay("Thursday")} color = {dayList[4]}/>
+        <Button title={dayNames[5]} onPress = {()=>changeDay("Friday")} color = {dayList[5]}/>
+        <Button title={dayNames[6]} onPress = {()=>changeDay("Saturday")} color = {dayList[6]}/>
       </View>
     
     <ScrollView style = {{height:'100%'}}>

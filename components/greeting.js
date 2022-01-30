@@ -9,7 +9,7 @@ const Greeting = () => {
     setTimeout(() => {
       const d = new Date();
       let hour = d.getHours();
-      hour = 19
+     
       if (hour <= 12 && hour >= 0) {
         changeGreeting("Good Morning ... 😄");
       } else if (hour > 12 && hour <= 16) {

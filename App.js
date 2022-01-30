@@ -6,7 +6,10 @@ import AddClassModal from "./screens/addClass";
 import EditClassModal from "./screens/editClass";
 import Main from "./screens/main";
 import { NavigationContainer } from "@react-navigation/native";
+import ShowLiveClass from './components/showliveclass';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import SundayMode from './components/sundayMode';
+import GoToClass from './screens/gotoclass';
   const MainStack = createStackNavigator();
   const RootStack = createStackNavigator();
 
@@ -70,8 +73,16 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
             component={AddClassModal}
             options={{ headerShown: false }}
           />
+                     <RootStack.Screen
+            name="Go to Class"
+            component={GoToClass}
+            options={{ headerShown: false }}
+          />
         </RootStack.Navigator>
       </NavigationContainer>
+  // <ShowLiveClass/>
+  // <SundayMode/>
+  // <GoToClass/>
     );
   };
   const styles = StyleSheet.create({

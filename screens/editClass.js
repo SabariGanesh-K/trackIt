@@ -76,6 +76,49 @@ const oldkey = route.params.key
 
   }
 
+  const deleteTheClass = () =>{
+    Alert.alert(
+      "Alert Title",
+      "My Alert Msg",
+      [
+        {
+          text: "Cancel",
+          onPress: () => {},
+          style: "cancel",
+        },
+        {
+          text: "DELETEE",
+          onPress: () => {
+            const dat = {
+              Monday: info.monday,
+              Tuesday: info.tuesday,
+              Wednesday: info.wednesday,
+              Thursday: info.thursday,
+              Friday: info.friday,
+              Saturday: info.saturday,
+            };
+        
+            const change = dat[day].filter((item)=>
+            item.key !== oldkey
+          )  
+          dat[day].length = 0
+          change.map((item)=> dat[day].push(item))
+          console.warn("deleted",info)
+          AsyncStorage.setItem('@storage_Key', JSON.stringify(info))  
+navigation.push("Main")
+
+          },
+          style: "destructive",
+        },
+      ],
+      {
+        cancelable: true,
+        onDismiss: () =>{},
+      }
+    );
+
+  
+  }
 
   // const deleteClass = () =>{
   //   const change = dat[day].filter((item)=>{
@@ -175,7 +218,7 @@ const oldkey = route.params.key
             <Button
               style={styles.button}
               title="DELETE CLASS :)"
-              onPress={()=>{}}
+              onPress={deleteTheClass}
               color="red"
             />
           </View>

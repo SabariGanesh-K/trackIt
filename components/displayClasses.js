@@ -4,6 +4,7 @@ import { FlatList } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import DisplayClass from "./displayClass";
 import NoClasss from "./noClass";
+import SundayMode from "./sundayMode";
 const DisplayClasses = (props) => {
   console.warn("program started")
   const [day,changeDay] = useState(props.currentday)
@@ -55,6 +56,12 @@ useEffect(()=>{
 console.warn("qwert",props.currentday)
 function displayit(){
   const status = isEmpty()
+
+  if (day == "Sunday"){
+    // return(
+    //   <SundayMode/>
+    // )
+  }
   if (status) {
     console.warn("cdscdsc","isempty true",props.currentday,day)
    return  (
@@ -83,7 +90,7 @@ function displayit(){
   
   }
 }
-
+console.warn("work done")
 return(displayit())
 };
 
