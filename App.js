@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import DisplayClass from "./components/displayClass";
 import {createStackNavigator} from '@react-navigation/stack';
@@ -32,28 +32,7 @@ import GoToClass from './screens/gotoclass';
     );
   };
 
-
-  const App = () => {
-
-    useEffect(() => {
-      async function checkEmpty() {
-        
-        await AsyncStorage.getAllKeys()
-          .then(async (res) => {
-            // await AsyncStorage.clear()
-            if(res.length == 0)
-            {
-              createEmptyStorage();
-            }
-            else{
-              console.warn("Data available")
-              
-            }     
-          })
-          .catch((e) => console.log(e));
-      }
-      checkEmpty();
-    }, []);
+  const RootStackScreen = () =>{
     return (
       <NavigationContainer style = {styles.container}>
         <RootStack.Navigator mode="modal">
@@ -84,6 +63,44 @@ import GoToClass from './screens/gotoclass';
   // <SundayMode/>
   // <GoToClass/>
     );
+  }
+
+
+  const App = () => {
+
+    const [display,changedisplay] = useState((<View style = {styles.container}>
+
+      </View>))
+
+const [checking,changechecking] = useState(true)
+      async function checkEmpty() {
+        
+        await AsyncStorage.getAllKeys()
+          .then(async (res) => {
+            // await AsyncStorage.clear()
+            if(res.length == 0)
+            {
+              createEmptyStorage();
+              changechecking(false)
+              changedisplay(RootStackScreen())
+            }
+            else{
+              console.warn("Data available")
+              changechecking(false)
+              changedisplay(RootStackScreen())
+              
+            }     
+          })
+          .catch((e) => console.log(e));
+      }
+
+      if (checking){
+        checkEmpty();
+      }
+  
+  
+      return(display)
+
   };
   const styles = StyleSheet.create({
     container: {

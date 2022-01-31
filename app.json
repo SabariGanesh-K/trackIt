@@ -8,7 +8,10 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#DBCBBD",
+      "androidStatusBar": {
+        "backgroundColor": "#DBCBBD",
+        "translucent": false
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -19,12 +22,16 @@
     "ios": {
       "supportsTablet": true
     },
+    "expo": {
+    
+      }},
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/appicon.png",
         "backgroundColor": "#290001"
       },
-      "softwareKeyboardLayoutMode": "pan"
+      "softwareKeyboardLayoutMode": "pan",
+      "package": "com.sabari_ganesh_k.trackyourclassreloaded"
     },
     "web": {
       "favicon": "./assets/favicon.png"
