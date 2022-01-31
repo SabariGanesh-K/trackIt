@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "ffcsplanner",
+    "name": "Track Your Class",
     "slug": "ffcsplanner",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/appicon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -21,8 +21,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/appicon.png",
+        "backgroundColor": "#290001"
       },
       "softwareKeyboardLayoutMode": "pan"
     },
